@@ -1,5 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import Tweet from './Tweet'
 
 const Dashboard = ({ tweetIds }) => {
   return (
@@ -9,7 +10,7 @@ const Dashboard = ({ tweetIds }) => {
         {tweetIds.map((id) => {
           return (
             <li key={id}>
-              <div>TWEET ID: {id}</div>
+              <Tweet id={id} />
             </li>
           )
         })}
