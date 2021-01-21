@@ -1,4 +1,5 @@
 import React from 'react'
+import {Link, withRouter} from 'react-router-dom'
 import { connect } from 'react-redux'
 import { formatTweet, formatDate } from '../utils/helpers'
 import { TiArrowBackOutline } from 'react-icons/ti'
@@ -21,6 +22,7 @@ const Tweet = (props) => {
 
   const toParent = (e, id) => {
     e.preventDefault()
+    props.history.push(`/tweet/${id}`)
     // todo: redirect to the paret tweet
   }
 
@@ -38,7 +40,7 @@ const Tweet = (props) => {
   } = tweet
 
   return (
-    <div className='tweet'>
+    <Link to={`/tweet/${tweet.id}`} className='tweet'>
       <img src={avatar} alt={`Avatar of ${name}`} className='avatar' />
       <div className='tweet-info'>
         <div>
@@ -67,7 +69,7 @@ const Tweet = (props) => {
           <span>{likes !== 0 && likes}</span>
         </div>
       </div>
-    </div>
+    </Link>
   )
 }
 
@@ -83,4 +85,4 @@ const mapStateToProps = ({ authedUser, users, tweets }, { id }) => {
   }
 }
 
-export default connect(mapStateToProps)(Tweet)
+export default withRouter(connect(mapStateToProps)(Tweet))

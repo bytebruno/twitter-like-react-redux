@@ -1,9 +1,11 @@
 import React, { useState } from 'react'
+import { Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { handleAddTweet } from '../actions/tweets'
 
 const NewTweet = ({ dispatch, id }) => {
   const [text, setText] = useState('')
+  const [toHome, setToHome] = useState(false)
 
   const tweetLeft = 280 - text.length
 
@@ -15,6 +17,11 @@ const NewTweet = ({ dispatch, id }) => {
     e.preventDefault()
     dispatch(handleAddTweet(text, id))
     setText('')
+    id ? setToHome(false) : setToHome(true)
+  }
+
+  if (toHome) {
+    return <Redirect to='/' />
   }
 
   return (
