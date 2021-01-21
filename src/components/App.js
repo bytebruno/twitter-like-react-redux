@@ -5,10 +5,9 @@ import LoadingBar from 'react-redux-loading'
 
 import Dashboard from './Dashboard'
 import NewTweet from './NewTweet'
+import TweetPage from './TweetPage'
 
-const App = ({dispatch, loading}) => {
-  
-
+const App = ({ dispatch, loading }) => {
   useEffect(() => {
     dispatch(handleInitialData())
   }, [])
@@ -16,7 +15,9 @@ const App = ({dispatch, loading}) => {
   return (
     <div>
       <LoadingBar />
-      {loading ? null : <NewTweet />}
+      {loading ? null : (
+        <TweetPage match={{ params: { id: '8xf0y6ziyjabvozdd253nd' } }} />
+      )}
     </div>
   )
 }
