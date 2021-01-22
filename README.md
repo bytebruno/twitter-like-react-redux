@@ -1,6 +1,6 @@
 # Twitter Like React Redux
 
-Twitter (like) web app made by react and redux tecnhologies. 
+Twitter (like) web app made by react and redux technologies. 
 
 ## Project Setup
 
